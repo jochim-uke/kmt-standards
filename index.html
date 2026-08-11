@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Passwortgeschützter Zugriff auf die KMT-Standards.">
+  <meta name="theme-color" content="#071a3d">
+  <title>KMT-Standards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="hero"><div class="wrap"><a class="back" href="https://jochim-uke.github.io/medical-search-tools/">← Alle Suchtools</a><p class="eyebrow">Geschützter Bereich</p><h1>KMT-<span>Standards</span></h1><p class="intro">Medikamente und weitere Standards für die klinische Orientierung.</p></div></header>
+  <main class="wrap content">
+    <section id="lock" class="lock" aria-labelledby="lock-title">
+      <div class="lock__icon" aria-hidden="true">KMT</div><p class="kicker">Zugang erforderlich</p><h2 id="lock-title">Standards entsperren</h2><p>Die Inhalte sind verschlüsselt. Das Passwort wird ausschließlich lokal in diesem Browser verarbeitet.</p>
+      <form id="unlock-form"><label for="password">Passwort</label><div class="password-row"><input id="password" type="password" autocomplete="current-password" required autofocus><button type="button" id="toggle-password" aria-label="Passwort anzeigen">Anzeigen</button></div><button class="primary" type="submit">Standards öffnen</button></form><p id="unlock-status" class="status" role="alert"></p>
+    </section>
+    <section id="standards" hidden>
+      <div class="toolbar"><div><p class="kicker">Klinische Übersicht</p><h2>Medikamente und weitere Standards</h2></div><button id="lock-again" type="button">Sperren</button></div>
+      <div class="controls"><label><span>Standards durchsuchen</span><input type="search" id="search" placeholder="Medikation, Kategorie oder Standard …" autocomplete="off"></label><label><span>Ansicht</span><select id="view"><option value="category">Nach Kategorie</option><option value="medication">Nach Medikation</option></select></label></div>
+      <p id="result-count" class="result-count"></p><div id="table-container"></div>
+      <aside><strong>Hinweis</strong><p>Dieses Tool dient der besseren Veranschaulichung von Therapiestandards. Vorbehaltlich von Irrtümern gelten die Vorgaben der SOPs.</p></aside>
+    </section>
+  </main>
+  <footer class="wrap"><p>KMT-Standards · Geschützter Bereich</p><a href="https://jochim-uke.github.io/medical-search-tools/">Zur Übersicht</a></footer>
+</body>
+</html>
