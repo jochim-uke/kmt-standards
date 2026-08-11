@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="editor.css">
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -20,12 +21,14 @@
       <form id="unlock-form"><label for="password">Passwort</label><div class="password-row"><input id="password" type="password" autocomplete="current-password" required autofocus><button type="button" id="toggle-password" aria-label="Passwort anzeigen">Anzeigen</button></div><button class="primary" type="submit">Standards öffnen</button></form><p id="unlock-status" class="status" role="alert"></p>
     </section>
     <section id="standards" hidden>
-      <div class="toolbar"><div><p class="kicker">Klinische Übersicht</p><h2>Medikamente und weitere Standards</h2></div><button id="lock-again" type="button">Sperren</button></div>
+      <div class="toolbar"><div><p class="kicker">Klinische Übersicht</p><h2>Medikamente und weitere Standards</h2></div><div class="toolbar__actions"><button id="open-admin" type="button">Standards aktualisieren</button><button id="lock-again" type="button">Sperren</button></div></div>
       <div class="controls"><label><span>Standards durchsuchen</span><input type="search" id="search" placeholder="Medikation, Kategorie oder Standard …" autocomplete="off"></label><label><span>Ansicht</span><select id="view"><option value="category">Nach Kategorie</option><option value="medication">Nach Medikation</option></select></label></div>
       <p id="result-count" class="result-count"></p><div id="table-container"></div>
+      <section id="editor" class="editor" hidden aria-labelledby="editor-title"><div class="editor__heading"><div><p class="kicker">Administrationsbereich</p><h3 id="editor-title">Standards bearbeiten</h3></div><button id="close-editor" type="button">Bearbeitung beenden</button></div><div class="editor__actions"><label class="file-button">CSV importieren<input id="csv-import" type="file" accept=".csv,text/csv"></label><button id="add-record" type="button">Neuen Eintrag hinzufügen</button><button id="export-encrypted" class="primary" type="button">Verschlüsselte Aktualisierung erstellen</button></div><p class="editor__help">Nach dem Export die heruntergeladene Datei <code>standards.enc.json</code> im GitHub-Repository ersetzen.</p><p id="editor-status" class="status" role="status"></p><div id="editor-container" class="editor__table"></div></section>
       <aside><strong>Hinweis</strong><p>Dieses Tool dient der besseren Veranschaulichung von Therapiestandards. Vorbehaltlich von Irrtümern gelten die Vorgaben der SOPs.</p></aside>
     </section>
   </main>
+  <dialog id="admin-dialog" aria-labelledby="admin-title"><button id="close-admin" class="dialog-close" type="button" aria-label="Schließen">×</button><p class="kicker">Zweiter Sicherheitsschritt</p><h2 id="admin-title">Administration entsperren</h2><p>Zum Bearbeiten und Exportieren ist das separate Administratorpasswort erforderlich.</p><form id="admin-form"><label for="admin-password">Administratorpasswort</label><div class="password-row"><input id="admin-password" type="password" autocomplete="off" required><button type="button" id="toggle-admin-password">Anzeigen</button></div><button class="primary" type="submit">Bearbeitung freigeben</button></form><p id="admin-status" class="status" role="alert"></p></dialog>
   <footer class="wrap"><p>KMT-Standards · Geschützter Bereich</p><a href="https://jochim-uke.github.io/medical-search-tools/">Zur Übersicht</a></footer>
 </body>
 </html>
